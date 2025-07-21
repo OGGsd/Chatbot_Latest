@@ -16,6 +16,10 @@
     animation-fill-mode: both;
   }
   
+  .animate-pulse-once {
+    animation: pulse-once 0.6s ease-out;
+  }
+  
   .slide-in-from-bottom-2 {
     animation: slide-in-from-bottom-2 0.3s ease-out;
   }
@@ -71,6 +75,15 @@
     to {
       transform: scale(1);
       opacity: 1;
+    }
+  }
+  
+  @keyframes pulse-once {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
     }
   }
 }

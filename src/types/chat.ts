@@ -16,13 +16,13 @@ export interface ChatbotConfig {
 export const translations = {
   sv: {
     title: 'Axie',
-    subtitle: 'Hjälper dig navigera och hantera dina bokningar',
+    subtitle: 'AI-assistent för Axie Studio',
     inputPlaceholder: 'Skriv ditt meddelande...',
     sendButton: 'Skicka meddelande',
     bookingTitle: 'Boka ett möte',
     closeBooking: 'Stäng bokning',
     errorMessage: 'Tyvärr uppstod ett fel vid behandling av ditt meddelande. Försök igen.',
-    welcomeMessage: 'Hej! Jag är Axie och hjälper dig gärna. Ställ frågor eller boka ett möte.',
+    welcomeMessage: 'Hej! 👋 Jag är Axie, din AI-assistent. Jag hjälper dig gärna med frågor om våra tjänster eller att boka ett möte.',
     quickActions: {
       whatIsAxie: 'Vad är Axie Studio?',
       checkAvailability: 'Kolla tillgänglighet',
@@ -31,13 +31,13 @@ export const translations = {
   },
   en: {
     title: 'Axie',
-    subtitle: 'Helping you navigate and manage your bookings',
+    subtitle: 'AI Assistant for Axie Studio',
     inputPlaceholder: 'Type your message...',
     sendButton: 'Send message',
     bookingTitle: 'Schedule a Meeting',
     closeBooking: 'Close booking',
     errorMessage: 'Sorry, there was an error processing your message. Please try again.',
-    welcomeMessage: 'Hello! I\'m Axie and I\'m here to help. Feel free to ask questions or schedule a meeting.',
+    welcomeMessage: 'Hello! 👋 I\'m Axie, your AI assistant. I\'m here to help you with questions about our services or to schedule a meeting.',
     quickActions: {
       whatIsAxie: 'What is Axie Studio?',
       checkAvailability: 'Check availability',

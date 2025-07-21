@@ -5,7 +5,7 @@ export default function App() {
     <Chatbot
       config={{
         title: 'Axie',
-        subtitle: 'Hjälper dig navigera och hantera dina bokningar'
+        subtitle: 'AI-assistent för Axie Studio'
       }}
     />
   );
