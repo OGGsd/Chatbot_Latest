@@ -6,7 +6,7 @@ import { detectLanguage, formatTime, generateMessageId, LanguageCode } from '../
 const defaultConfig: ChatbotConfig = {
   webhookUrl: 'https://stefan0987.app.n8n.cloud/webhook/156b9b80-a524-4116-9b0a-f93aa729a5ea',
   bookingUrl: 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0QR3uRxVB7rb4ZHqJ1qYmz-T0e2CFtV5MYekvGDq1qyWxsV_Av3nP3zEGk0DrH2HqpTLoXuK0h',
-  title: translations.sv.title,
+  title: 'Axie Studio',
   subtitle: translations.sv.subtitle,
   language: 'sv'
 };
@@ -18,34 +18,34 @@ interface ChatbotProps {
 // Message bubble component
 const MessageBubble = ({ message, language }: { message: ChatMessage; language: LanguageCode }) => (
   <div
-    className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'} mb-4 animate-in slide-in-from-bottom-2 duration-300`}
+    className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'} mb-6 animate-in slide-in-from-bottom-2 duration-500`}
   >
-    <div className="flex items-start max-w-[85%] sm:max-w-[75%] lg:max-w-[70%] group">
+    <div className="flex items-start max-w-[85%] sm:max-w-[75%] lg:max-w-[65%] group">
       {message.type === 'bot' && (
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mr-3 mt-1 shadow-lg flex-shrink-0">
-          <Bot size={16} className="text-white" />
+        <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 flex items-center justify-center mr-4 mt-1 shadow-xl border border-slate-500/20 flex-shrink-0 backdrop-blur-sm">
+          <Bot size={18} className="text-slate-50" />
         </div>
       )}
       <div className="flex flex-col">
         <div
           className={`rounded-2xl px-4 py-3 shadow-sm ${
             message.type === 'user'
-              ? 'bg-blue-600 text-white ml-auto shadow-md'
-              : 'bg-white text-gray-800 border border-gray-200 shadow-sm'
+              ? 'bg-gradient-to-br from-slate-800 via-slate-700 to-slate-600 text-slate-50 ml-auto shadow-2xl border border-slate-500/30'
+              : 'bg-gradient-to-br from-slate-50 via-white to-slate-50/90 text-slate-800 border border-slate-200/60 shadow-xl'
           }`}
         >
           <div 
-            className="text-sm leading-relaxed break-words whitespace-pre-wrap"
+            className="text-sm leading-relaxed break-words whitespace-pre-wrap font-medium"
             dangerouslySetInnerHTML={{ __html: message.content }}
           />
         </div>
-        <div className={`text-xs mt-1 opacity-60 ${message.type === 'user' ? 'text-right text-gray-400' : 'text-left text-gray-500'}`}>
+        <div className={`text-xs mt-2 opacity-70 font-medium ${message.type === 'user' ? 'text-right text-slate-400' : 'text-left text-slate-500'}`}>
           {formatTime(message.timestamp, language)}
         </div>
       </div>
       {message.type === 'user' && (
-        <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center ml-3 mt-1 shadow-lg flex-shrink-0">
-          <User size={16} className="text-white" />
+        <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-slate-600 via-slate-500 to-slate-400 flex items-center justify-center ml-4 mt-1 shadow-xl border border-slate-400/20 flex-shrink-0 backdrop-blur-sm">
+          <User size={18} className="text-slate-50" />
         </div>
       )}
     </div>
@@ -54,16 +54,16 @@ const MessageBubble = ({ message, language }: { message: ChatMessage; language: 
 
 // Typing indicator component
 const TypingIndicator = () => (
-  <div className="flex justify-start mb-4">
-    <div className="flex items-start space-x-3 max-w-[80%]">
-      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
-        <Bot size={16} className="text-white" />
+  <div className="flex justify-start mb-6">
+    <div className="flex items-start space-x-4 max-w-[80%]">
+      <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 flex items-center justify-center shadow-xl border border-slate-500/20 backdrop-blur-sm">
+        <Bot size={18} className="text-slate-50" />
       </div>
-      <div className="bg-white rounded-2xl px-4 py-3 border border-gray-200 shadow-sm">
-        <div className="flex space-x-1">
-          <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-          <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-          <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+      <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50/90 rounded-3xl px-5 py-4 border border-slate-200/60 shadow-xl backdrop-blur-sm">
+        <div className="flex space-x-1.5">
+          <div className="w-2.5 h-2.5 bg-slate-400 rounded-full animate-bounce"></div>
+          <div className="w-2.5 h-2.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
+          <div className="w-2.5 h-2.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
         </div>
       </div>
     </div>
@@ -263,22 +263,27 @@ export default function Chatbot({ config = {} }: ChatbotProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-800">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(148,163,184,0.1),transparent_50%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(148,163,184,0.02)_50%,transparent_75%)] pointer-events-none"></div>
+      
       {/* Header */}
-      <div className="bg-gray-900 text-white p-4 sm:p-6 shadow-xl border-b border-gray-700">
+      <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-slate-50 p-6 sm:p-8 shadow-2xl border-b border-slate-700/50 backdrop-blur-xl relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-800/20 to-transparent"></div>
         <div className="flex items-center space-x-3 max-w-7xl mx-auto">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
-            <Bot size={20} className="sm:w-6 sm:h-6" />
+          <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-slate-600 via-slate-500 to-slate-400 rounded-3xl flex items-center justify-center shadow-2xl border border-slate-400/30 backdrop-blur-sm">
+            <Bot size={24} className="sm:w-7 sm:h-7 text-slate-50" />
           </div>
-          <div>
-            <h3 className="font-semibold text-lg sm:text-xl">{t.title}</h3>
-            <p className="text-gray-300 text-sm sm:text-base">{t.subtitle}</p>
+          <div className="relative z-10">
+            <h3 className="font-bold text-xl sm:text-2xl bg-gradient-to-r from-slate-50 to-slate-200 bg-clip-text text-transparent">Axie Studio</h3>
+            <p className="text-slate-300 text-sm sm:text-base font-medium opacity-90">{t.subtitle}</p>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 max-w-7xl mx-auto w-full bg-gray-800">
+      <div className="flex-1 overflow-y-auto p-6 sm:p-8 max-w-7xl mx-auto w-full relative z-10 custom-scrollbar">
         {messages.map((message) => (
           <MessageBubble key={message.id} message={message} language={currentLanguage} />
         ))}
@@ -287,23 +292,24 @@ export default function Chatbot({ config = {} }: ChatbotProps) {
       </div>
 
       {/* Quick Actions */}
-      <div className="px-4 sm:px-6 py-3 border-t border-gray-700 bg-gray-900 max-w-7xl mx-auto w-full">
-        <div className="flex flex-wrap gap-2">
+      <div className="px-6 sm:px-8 py-4 border-t border-slate-700/50 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 max-w-7xl mx-auto w-full backdrop-blur-xl relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-800/10 to-transparent"></div>
+        <div className="flex flex-wrap gap-3 relative z-10">
           <button
             onClick={() => handleQuickAction(t.quickActions.whatIsAxie)}
-            className="text-xs sm:text-sm px-3 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors text-gray-200 border border-gray-600"
+            className="text-xs sm:text-sm px-4 py-2.5 rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 transition-all duration-300 text-slate-200 border border-slate-600/50 shadow-lg hover:shadow-xl transform hover:scale-105 font-medium backdrop-blur-sm"
           >
             {t.quickActions.whatIsAxie}
           </button>
           <button
             onClick={() => handleQuickAction(t.quickActions.checkAvailability)}
-            className="text-xs sm:text-sm px-3 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors text-gray-200 border border-gray-600"
+            className="text-xs sm:text-sm px-4 py-2.5 rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 transition-all duration-300 text-slate-200 border border-slate-600/50 shadow-lg hover:shadow-xl transform hover:scale-105 font-medium backdrop-blur-sm"
           >
             {t.quickActions.checkAvailability}
           </button>
           <button
             onClick={() => handleQuickAction(t.quickActions.bookConsultation)}
-            className="text-xs sm:text-sm px-3 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors text-gray-200 border border-gray-600"
+            className="text-xs sm:text-sm px-4 py-2.5 rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 transition-all duration-300 text-slate-200 border border-slate-600/50 shadow-lg hover:shadow-xl transform hover:scale-105 font-medium backdrop-blur-sm"
           >
             {t.quickActions.bookConsultation}
           </button>
@@ -311,52 +317,53 @@ export default function Chatbot({ config = {} }: ChatbotProps) {
       </div>
 
       {/* Input */}
-      <div className="p-4 sm:p-6 border-t border-gray-700 bg-gray-900 max-w-7xl mx-auto w-full">
-        <div className="flex items-end space-x-3">
+      <div className="p-6 sm:p-8 border-t border-slate-700/50 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 max-w-7xl mx-auto w-full backdrop-blur-xl relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-800/10 to-transparent"></div>
+        <div className="flex items-end space-x-4 relative z-10">
           <textarea
             ref={inputRef}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder={t.inputPlaceholder}
-            className="flex-1 resize-none border border-gray-600 bg-gray-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 max-h-32 text-sm sm:text-base transition-all duration-200 placeholder-gray-400"
+            className="flex-1 resize-none border border-slate-600/50 bg-gradient-to-br from-slate-800 to-slate-700 text-slate-50 rounded-3xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 max-h-32 text-sm sm:text-base transition-all duration-300 placeholder-slate-400 shadow-xl backdrop-blur-sm font-medium"
             rows={1}
             disabled={isLoading}
           />
           <button
             onClick={handleSendMessage}
             disabled={!inputValue.trim() || isLoading}
-            className="bg-blue-600 hover:bg-blue-700 text-white p-3 sm:p-4 rounded-xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex-shrink-0 transform hover:scale-105"
+            className="bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 hover:from-slate-600 hover:via-slate-500 hover:to-slate-400 text-slate-50 p-4 sm:p-5 rounded-3xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex-shrink-0 transform hover:scale-110 shadow-xl border border-slate-500/30 backdrop-blur-sm"
             aria-label={t.sendButton}
           >
-            <Send size={18} className="sm:w-5 sm:h-5" />
+            <Send size={20} className="sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>
 
       {/* Booking Modal */}
       {showBookingModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-4 animate-in fade-in duration-300">
-          <div className="bg-white rounded-2xl w-full max-w-6xl h-[90vh] max-h-[900px] flex flex-col shadow-2xl animate-in zoom-in-95 duration-300">
-            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 bg-gray-900 text-white rounded-t-2xl">
+        <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-md flex items-center justify-center z-[60] p-4 animate-in fade-in duration-500">
+          <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50 rounded-3xl w-full max-w-6xl h-[90vh] max-h-[900px] flex flex-col shadow-2xl animate-in zoom-in-95 duration-500 border border-slate-200/50">
+            <div className="flex items-center justify-between p-6 sm:p-8 border-b border-slate-200/60 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-slate-50 rounded-t-3xl backdrop-blur-xl">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                  <Calendar className="text-white" size={20} />
+                <div className="w-12 h-12 bg-gradient-to-br from-slate-600 via-slate-500 to-slate-400 rounded-3xl flex items-center justify-center shadow-xl border border-slate-400/30">
+                  <Calendar className="text-slate-50" size={24} />
                 </div>
-                <h2 className="text-xl sm:text-2xl font-semibold">{t.bookingTitle}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-50 to-slate-200 bg-clip-text text-transparent">{t.bookingTitle}</h2>
               </div>
               <button
                 onClick={() => setShowBookingModal(false)}
-                className="text-gray-300 hover:text-white hover:bg-gray-800 p-2 rounded-lg transition-all duration-200"
+                className="text-slate-300 hover:text-slate-50 hover:bg-slate-800/50 p-3 rounded-2xl transition-all duration-300 backdrop-blur-sm"
                 aria-label={t.closeBooking}
               >
-                <X size={24} />
+                <X size={26} />
               </button>
             </div>
             <div className="flex-1 overflow-hidden">
               <iframe
                 src={finalConfig.bookingUrl}
-                className="w-full h-full border-none"
+                className="w-full h-full border-none rounded-b-3xl"
                 title={t.bookingTitle}
               />
             </div>
