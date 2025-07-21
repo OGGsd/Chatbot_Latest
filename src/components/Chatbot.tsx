@@ -352,7 +352,7 @@ export default function Chatbot({ config = {} }: ChatbotProps) {
           <div className="flex items-center space-x-2.5">
             <div className="w-7 h-7 rounded-lg flex items-center justify-center overflow-hidden bg-white shadow-sm ring-2 ring-white/20">
               <img 
-                src="/project/public/favicon-32x32.png" 
+                src="/favicon-32x32.png" 
                 alt="Axie Studio Logo" 
                 className="w-5 h-5 object-contain"
                 onError={(e) => {
