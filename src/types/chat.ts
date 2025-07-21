@@ -15,7 +15,7 @@ export interface ChatbotConfig {
 
 export const translations = {
   sv: {
-    title: 'Axie Studio Support Bot',
+    title: 'Axie',
     subtitle: 'Axie kan hjälpa dig att navigera, förstå eller hantera dina bokningar!',
     inputPlaceholder: 'Skriv ditt meddelande...',
     sendButton: 'Skicka meddelande',
@@ -30,7 +30,7 @@ export const translations = {
     }
   },
   en: {
-    title: 'Axie Studio Support Bot',
+    title: 'Axie',
     subtitle: 'Axie can help you navigate, understand or manage your bookings!',
     inputPlaceholder: 'Type your message...',
     sendButton: 'Send message',
